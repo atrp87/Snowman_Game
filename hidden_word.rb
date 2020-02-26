@@ -32,4 +32,6 @@ class HiddenWord
       return @displayed_letters
     end
 
+
+
 end

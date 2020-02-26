@@ -32,7 +32,28 @@ class SnowmanTest < MiniTest::Test
     end
 
     def test_remove_life()
-      @player
+      @player1.remove_life
+      assert_equal(5, @player1.lives)
+    end
+
+    def test_is_letter_in_word__true()
+      assert_equal(true, @game.is_letter_in_word("n"))
+    end
+
+    def test_is_letter_in_word__false()
+      assert_equal(false, @game.is_letter_in_word("x"))
+    end
+
+    def test_game_result__won
+      @game.player_guesses_letter("s")
+      @game.player_guesses_letter("n")
+      @game.player_guesses_letter("a")
+      @game.player_guesses_letter("i")
+      @game.player_guesses_letter("l")
+
+      puts @hidden_word.get_displayed_letters_array()
+
+      assert_equal("won", @game.game_result)
     end
 
 end
